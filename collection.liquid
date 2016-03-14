@@ -1,0 +1,51 @@
+{% comment %}
+    Framework: Foundation 6
+    http://foundation.zurb.com/sites/docs/
+{% endcomment %}
+
+{% paginate collection.products by 20 %}
+{% if paginate.pages > 1 %}
+
+<!-- pagination top -->
+<div class="small-12 columns show-for-large">
+    <ul class="pagination" role="navigation" aria-label="Pagination">
+        {% if paginate.previous %}
+            <li><a href="{{ paginate.previous.url }}" aria-label="{{ paginate.previous.title }} Page">{{ paginate.previous.title }} <span class="show-for-sr">Page</span></a></li>
+        {% endif %}
+        {% for part in paginate.parts %}
+            {% if part.is_link %}
+                <!-- page {{ part.title }}  -->
+                <li>
+                    <a href="{{ part.url }}" aria-label="Seite {{ part.title }}">{{ part.title }}</a>
+                </li>
+            {% else %}
+                {% if part.title == paginate.current_page %}
+                    <!-- active page -->
+                    <li class="active"><span>{{ part.title }}</span></li>
+                {% else %}
+
+                    <!-- ellipsis -->
+                    <li class="ellipsis" aria-hidden="true">{{ part.title }}</li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if paginate.next %}
+            <li><a href="{{ paginate.next.url }}" title="{{ paginate.next.title }} Page">{{ paginate.next.title }} <span class="show-for-sr">Page</span></a></li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+
+
+<!-- items -->
+<div class="small-12 columns">
+    <div class="row" id="product-list">
+        {% for product in collection.products %}
+            <div class="small-6 medium-6 large-3 end columns">
+                {% include 'product-list-item-inner' with product %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="javascript:void(0);" id="load-more" class="margin-t button w100 primary">Show more</a>
+</div>
