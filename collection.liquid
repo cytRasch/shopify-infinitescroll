@@ -7,7 +7,7 @@
 {% if paginate.pages > 1 %}
 
 <!-- pagination top -->
-<div class="small-12 columns show-for-large">
+<div class="small-12 columns">
     <ul class="pagination" role="navigation" aria-label="Pagination">
         {% if paginate.previous %}
             <li><a href="{{ paginate.previous.url }}" aria-label="{{ paginate.previous.title }} Page">{{ paginate.previous.title }} <span class="show-for-sr">Page</span></a></li>
@@ -16,7 +16,7 @@
             {% if part.is_link %}
                 <!-- page {{ part.title }}  -->
                 <li>
-                    <a href="{{ part.url }}" aria-label="Seite {{ part.title }}">{{ part.title }}</a>
+                    <a href="{{ part.url }}" aria-label="Page {{ part.title }}">{{ part.title }}</a>
                 </li>
             {% else %}
                 {% if part.title == paginate.current_page %}
@@ -47,5 +47,5 @@
         {% endfor %}
     </div>
 
-    <a href="javascript:void(0);" id="load-more" class="margin-t button w100 primary">Show more</a>
+    <a href="javascript:void(0);" id="load-more" class="button expanded primary">Show more</a>
 </div>
