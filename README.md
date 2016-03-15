@@ -1,2 +1,2 @@
 # shopify-infinitescroll
-The simplest way to add infinite scrolling to your collections page
+The simplest way to add infinite scrolling/infinite scroll to your collections page
